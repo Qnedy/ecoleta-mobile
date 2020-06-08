@@ -13,6 +13,10 @@ const Points = () => {
     navigation.goBack();
   }
 
+  function handleNavigateToDetail(){
+    navigation.navigate('Detail');
+  }
+
   return (
     <>
       <View style={styles.container}>
@@ -25,7 +29,7 @@ const Points = () => {
 
         <View style={styles.mapContainer}>
           <MapView style={styles.map} initialRegion={{ latitude: -27.2092052, longitude: -49.6401092, latitudeDelta: 0.014, longitudeDelta: 0.014 }}>
-            <Marker coordinate={{ latitude: -27.2092052, longitude: -49.6401092 }}>
+            <Marker coordinate={{ latitude: -27.2092052, longitude: -49.6401092 }} onPress={handleNavigateToDetail}>
               <View style={styles.mapMarkerContainer}>
                 <Image style={styles.mapMarkerImage} source={{ uri: "https://images.unsplash.com/photo-1552353289-97f99c442b3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60" }} />
                 <Text style={styles.mapMarkerTitle}>Mercado</Text>
