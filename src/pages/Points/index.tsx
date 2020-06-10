@@ -64,8 +64,8 @@ const Points = () => {
     navigation.goBack();
   }
 
-  function handleNavigateToDetail(){
-    navigation.navigate('Detail');
+  function handleNavigateToDetail(id: number){
+    navigation.navigate('Detail', { point_id: id });
   }
 
   function handleSelectItems(id: number){
@@ -93,7 +93,7 @@ const Points = () => {
         <View style={styles.mapContainer}>
           { initialPosition[0] !== 0 && (<MapView style={styles.map} initialRegion={{ latitude: initialPosition[0], longitude: initialPosition[1], latitudeDelta: 0.014, longitudeDelta: 0.014 }}>
             {points.map(point => (
-              <Marker key={String(point.id)} coordinate={{ latitude: point.latitude, longitude: point.longitude }} onPress={handleNavigateToDetail}>
+              <Marker key={String(point.id)} coordinate={{ latitude: point.latitude, longitude: point.longitude }} onPress={() => handleNavigateToDetail(point.id)}>
                 <View style={styles.mapMarkerContainer}>
                   <Image style={styles.mapMarkerImage} source={{ uri: point.image }} />
                   <Text style={styles.mapMarkerTitle}>{point.name}</Text>
